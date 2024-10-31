@@ -1,0 +1,14 @@
+<div *ngIf="user">
+    <h3>Editar Usuario</h3>
+    <p>ID del Usuario: {{ user.id }}</p> <!-- Aquí mostramos el ID del usuario -->
+    <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+      <label for="name">Nombre:</label>
+      <input id="name" formControlName="name" />
+  
+      <label for="email">Correo Electrónico:</label>
+      <input id="email" formControlName="email" />
+  
+      <button type="submit" [disabled]="editForm.invalid">Guardar Cambios</button>
+    </form>
+  </div>
+  

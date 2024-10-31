@@ -1,14 +1,27 @@
 <div class="user-list-container">
-    <h2 class="user-list-title">Lista de Usuarios</h2>
-    <div *ngFor="let user of users" class="user-item">
-      <div class="user-info">
-        <span class="user-name">{{ user.name }}</span>
-        <span class="user-email">{{ user.email }}</span>
-      </div>
-      <div class="action-buttons">
-        <button class="action-button edit">Editar</button>
-        <button class="action-button delete">Eliminar</button>
-      </div>
+  <h2 class="user-list-title">Lista de Usuarios</h2>
+  
+   <!-- Formulario para crear un nuevo usuario -->
+   <app-user-create (userCreated)="loadUsers()"></app-user-create>
+
+  <!-- Listado de usuarios -->
+  <div *ngFor="let user of users" class="user-item">
+    <div class="user-info">
+      <span class="user-name">{{ user.name }}</span>
+      <span class="user-email">{{ user.email }}</span>
+    </div>
+    <div class="action-buttons">
+      <button class="action-button edit" (click)="editUser(user)">Editar</button>
+      <button class="action-button delete" (click)="deleteUser(user.id)">Eliminar</button>
     </div>
   </div>
+
+  <!-- Formulario de edición de usuario -->
+  <app-user-edit 
+    *ngIf="userToEdit" 
+    [user]="userToEdit" 
+    (userUpdated)="onUserUpdated($event)">
+  </app-user-edit>
+</div>
+
   

@@ -27,3 +27,7 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain('Edson el XD');
   });
 });
+
+
+
+//es para testear el componente
